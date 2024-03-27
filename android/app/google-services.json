@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1038679318978",
+    "project_id": "mynavy-feff6",
+    "storage_bucket": "mynavy-feff6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1038679318978:android:e0f06278b97511cee5f65b",
+        "android_client_info": {
+          "package_name": "uk.mod.mynavy.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0b8-re56lvosP9oO_267DpvXwMv4_QlY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
