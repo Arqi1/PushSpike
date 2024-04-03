@@ -4,6 +4,12 @@ export default class NotificationService {
   async registerAsync(request: any): Promise<Response> {
     const method = 'PUT';
     const registerApiUrl = `${this.apiUrl}/notifications/installations`;
+
+    console.log(
+      `Starting ${method} request to ${registerApiUrl} with request:`,
+      request,
+    );
+
     const result = await fetch(registerApiUrl, {
       method: method,
       headers: {
@@ -14,7 +20,12 @@ export default class NotificationService {
       body: JSON.stringify(request),
     });
 
+    console.log(`Received response from ${registerApiUrl}:`, result);
+
     this.validateResponse(registerApiUrl, method, request, result);
+
+    console.log(`Validated response from ${registerApiUrl}`);
+
     return result;
   }
 

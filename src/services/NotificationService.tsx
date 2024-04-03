@@ -1,3 +1,4 @@
+import {Alert, Linking} from 'react-native';
 import NotificationHandler from './NotificationHandler';
 import PushNotification from 'react-native-push-notification';
 
@@ -12,8 +13,13 @@ export default class NotificationService {
     });
   }
 
-  checkPermissions(cbk: any) {
-    return PushNotification.checkPermissions(cbk);
+  checkPermissions() {
+    PushNotification.checkPermissions(permissions => {
+      if (!permissions.alert && !permissions.badge && !permissions.sound) {
+        // The user has not granted permissions, show a dialog here
+        showEnableNotificationsDialog();
+      }
+    });
   }
 
   requestPermissions() {
@@ -32,3 +38,20 @@ export default class NotificationService {
     PushNotification.abandonPermissions();
   }
 }
+
+const showEnableNotificationsDialog = () => {
+  Alert.alert(
+    'Enable Notifications',
+    'This app needs notifications to work effectively.',
+    [
+      {text: 'Cancel', style: 'cancel'},
+      {text: 'Enable', onPress: () => openSettings()},
+    ],
+  );
+};
+
+const openSettings = () => {
+  Linking.openSettings().catch(() => {
+    Alert.alert('Unable to open settings');
+  });
+};

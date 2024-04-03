@@ -62,7 +62,13 @@ class App extends Component<IState> {
     );
   }
 
+  componentDidMount() {
+    this.notificationService.requestPermissions();
+    this.notificationService.checkPermissions();
+  }
+
   async onRegisterButtonPress() {
+    console.log('onRegisterButtonPress');
     if (!this.state.registeredToken || !this.state.registeredOS) {
       Alert.alert("The push notifications token wasn't received.");
       return;
@@ -80,9 +86,11 @@ class App extends Component<IState> {
         pushChannel: pnToken,
         tags: [],
       };
+      console.log(request);
       const response = await this.notificationRegistrationService.registerAsync(
         request,
       );
+      console.log(response);
       status = `Registered for ${this.state.registeredOS} push notifications`;
       isRegistered = true;
     } catch (e) {
