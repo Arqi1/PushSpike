@@ -1,4 +1,4 @@
-package uk.mod.mynavy.app
+package CHANGE.ME!
 
 import android.app.Application
 import com.facebook.react.PackageList

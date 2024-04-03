@@ -1,4 +1,4 @@
-package uk.mod.mynavy.app
+package CHANGE.ME!
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
